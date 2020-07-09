@@ -1,0 +1,65 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0; }
+
+.link__adalab:hover {
+  background-color: #099d8d;
+  color: #fff; }
+
+.link__github:hover {
+  background-color: #CCC;
+  color: #000; }
+
+body {
+  height: 100vh;
+  background-color: grey;
+  font-family: "Roboto", sans-serif; }
+
+.page__main {
+  padding: 20px; }
+
+.principal {
+  display: flex; }
+
+.finder {
+  width: 75vw;
+  padding: 15px;
+  text-align: center; }
+  .finder__title {
+    padding-bottom: 20px; }
+  .finder__results {
+    padding-top: 20px; }
+
+.favorites {
+  border: 2px solid black;
+  padding: 15px;
+  height: 75vh;
+  order: -1; }
+
+.page__header {
+  display: block;
+  justify-content: space-evenly;
+  background-color: black;
+  width: 100vw; }
+
+.menu {
+  color: white; }
+  .menu__list {
+    list-style-type: none;
+    display: flex;
+    justify-content: flex-end;
+    padding: 15px; }
+    .menu__list--item {
+      margin-right: 15px; }
+
+.page__footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100vw;
+  padding: 1rem;
+  color: white;
+  background-color: black; }
+
+/*# sourceMappingURL=main.css.map */
