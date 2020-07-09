@@ -14,14 +14,26 @@ body {
 
 .finder {
 	width: 75vw;
-	padding: 15px;
+	padding-top: 15px;
 	text-align: center;
 
+	&__name {
+		width: 200px;
+	}
 	&__title {
 		padding-bottom: 20px;
 	}
 	&__results {
 		padding-top: 20px;
+	}
+
+	&__btn {
+		border-style: none;
+		border-radius: 5px;
+		padding: 2px;
+		width: 50px;
+		color: white;
+		background-color: black;
 	}
 }
 .favorites {

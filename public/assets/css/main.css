@@ -24,12 +24,21 @@ body {
 
 .finder {
   width: 75vw;
-  padding: 15px;
+  padding-top: 15px;
   text-align: center; }
+  .finder__name {
+    width: 200px; }
   .finder__title {
     padding-bottom: 20px; }
   .finder__results {
     padding-top: 20px; }
+  .finder__btn {
+    border-style: none;
+    border-radius: 5px;
+    padding: 2px;
+    width: 50px;
+    color: white;
+    background-color: black; }
 
 .favorites {
   border: 2px solid black;
@@ -51,7 +60,7 @@ body {
     justify-content: flex-end;
     padding: 15px; }
     .menu__list--item {
-      margin-right: 15px; }
+      margin-right: 20px; }
 
 .page__footer {
   position: fixed;
