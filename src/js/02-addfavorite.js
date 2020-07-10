@@ -1,22 +1,21 @@
 'use strict';
 
-// SELECCCIONAR COMO FAV CON ID
+// SELECCCIONAR COMO FAV 
 
 const saveFavorites = (ev) => {
     let results = '';
-    console.log(results);
-    const clickedId = parseInt(ev.currentTarget.id);
+    const clicked = parseInt(ev.currentTarget);
     for (const result of results) {
-        if (result.id === clickedId && results.indexOf(index) === -1) {
+        if (result === clicked && results.indexOf(index) === -1) {
             favorites.push(result);
             paintSeriesFavorites();
         } else {
             // sí está: muestro un alert
             alert('This serie is already in your list!');
         }
-    }console.log('qué pasa', isNaN(clickedId));
+    }
 };
-  
+console.log(favorites);
 
 const listenSearchClick = () => {
     const seriesBtns = document.querySelectorAll('.js-selectFav');
@@ -33,7 +32,7 @@ const paintSeriesFavorites = (ev) => {
     let favSeries = ''; {
         for (let index = 0; index < seriesList.length; index += 1) {
             favSeries += `<li>`;
-            favSeries += `<article class="serie">`;
+            favSeries += `<article class="serieFav">`;
             favSeries += `<p class="serie__btn js-selectFav"
             id="${seriesList[index].show.id}"
             data-index="${index}">`;
@@ -47,7 +46,7 @@ const paintSeriesFavorites = (ev) => {
     const seriesFavsSelected = document.querySelector('.js-favs');
     seriesFavsSelected.innerHTML = favSeries;
     listenSearchClick();
-    // saveInfo();
+    saveInfo();
 };
 
 

@@ -9,7 +9,7 @@ let favSeries = document.querySelector('.js-favs');
 
 //CREAMOS ARRAYS
 
-let seriesList= [];
+let seriesList = [];
 let favorites = [];
 
 // LLAMAMOS A LA API
@@ -23,53 +23,45 @@ const getDataFromApi = () => {
             paintSeriesCatalogue(); //pintar
         })
         .catch(err => {
-    console.log('Ha habido un error', err);
-  });
+            console.log('Ha habido un error', err);
+        });
 };
 
 
 //FUNCIÓN ALERTA WRITE A SERIE NAME
 function fullInputSearch(evt) {
-  if (inputName.value === '') {
-   return alert('Write a serie name');
-  }
+    if (inputName.value === '') {
+        return alert('Write a serie name');
+    }
 };
 
-button.addEventListener('click', fullInputSearch )
+button.addEventListener('click', fullInputSearch);
 
 //FUNCION PARA PINTAR CATÁLOGO
 const paintSeriesCatalogue = (ev) => {
-    let results = '';{
+    let results = ''; {
         for (let index = 0; index < seriesList.length; index += 1) {
-            console.log(seriesList[index].show.name);
-            results += `<article class="serie">`;
-            results += `<p class="serie__btn js-selectFav"
-            id="${seriesList[index].show.id}"
-            data-index="${index}"
-            data-id="${seriesList[index].show.id}">`;
-            results += `<img src="${seriesList[index].show.image}" class="serie__img" alt="${seriesList[index].show.name}" />`;
-            results += `<h4 class="serie__title">${seriesList[index].show.name}</h4>`;
-            results += `</p>`;
-            results += `</article>`;
+            let element = seriesList[index];
+            if (element.show.image !== null) {
+                results += `<article class="serie serie__btn js-selectFav" id="${element.show.id}"
+                    data-index="${index}"
+                    data-id="${element.show.id}">`;
+                results += `<img src="${element.show.image.medium}  " class="serie__img" alt="${element.show.name} " />`;
+                results += `<h4 class="serie__title">${seriesList[index].show.name}     </h4>`;
+                results += `</article>`;
+            }
+            else {
+                results += `<article class="serie serie__btn js-selectFav" id="${element.show.id}" data-index="${index}" data-id="${element.show.id}">`;
+                results += `<img src="'https://via.placeholder.com/210x295/ffffff/666666/?text=TV'"                 class="serie__img" alt="${element.show.name} " />`;
+                results += `<h4 class="serie__title">${seriesList[index].show.name}     </h4>`;
+                results += `</article>`;
+            }
         }
+        const seriesElement = document.querySelector('.js-results');
+        seriesElement.innerHTML = results;
+        listenSearchClick();
     }
-    const seriesElement = document.querySelector('.js-results');
-    seriesElement.innerHTML = results;
-    listenSearchClick();
-    // console.log(results);
 };
 
 button.addEventListener('click', paintSeriesCatalogue);
 
-
-
-// Si no tiene imagen, por defecto, si tiene la de su ruta
-// const getImageSerie = () => {
-
-//         if (results.show.image.src === null) {
-//             return 
-//         } else {
-//             // sí está: muestro un alert
-//             alert('This serie is already in your list!');
-//         }
-//     };

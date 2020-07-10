@@ -9,7 +9,7 @@ let favSeries = document.querySelector('.js-favs');
 
 //CREAMOS ARRAYS
 
-let seriesList= [];
+let seriesList = [];
 let favorites = [];
 
 // LLAMAMOS A LA API
@@ -23,76 +23,67 @@ const getDataFromApi = () => {
             paintSeriesCatalogue(); //pintar
         })
         .catch(err => {
-    console.log('Ha habido un error', err);
-  });
+            console.log('Ha habido un error', err);
+        });
 };
 
 
 //FUNCIÓN ALERTA WRITE A SERIE NAME
 function fullInputSearch(evt) {
-  if (inputName.value === '') {
-   return alert('Write a serie name');
-  }
+    if (inputName.value === '') {
+        return alert('Write a serie name');
+    }
 };
 
-button.addEventListener('click', fullInputSearch )
+button.addEventListener('click', fullInputSearch);
 
 //FUNCION PARA PINTAR CATÁLOGO
 const paintSeriesCatalogue = (ev) => {
-    let results = '';{
+    let results = ''; {
         for (let index = 0; index < seriesList.length; index += 1) {
-            console.log(seriesList[index].show.name);
-            results += `<article class="serie">`;
-            results += `<p class="serie__btn js-selectFav"
-            id="${seriesList[index].show.id}"
-            data-index="${index}"
-            data-id="${seriesList[index].show.id}">`;
-            results += `<img src="${seriesList[index].show.image}" class="serie__img" alt="${seriesList[index].show.name}" />`;
-            results += `<h4 class="serie__title">${seriesList[index].show.name}</h4>`;
-            results += `</p>`;
-            results += `</article>`;
+            let element = seriesList[index];
+            if (element.show.image !== null) {
+                results += `<article class="serie serie__btn js-selectFav" id="${element.show.id}"
+                    data-index="${index}"
+                    data-id="${element.show.id}">`;
+                results += `<img src="${element.show.image.medium}  " class="serie__img" alt="${element.show.name} " />`;
+                results += `<h4 class="serie__title">${seriesList[index].show.name}     </h4>`;
+                results += `</article>`;
+            }
+            else {
+                results += `<article class="serie serie__btn js-selectFav" id="${element.show.id}" data-index="${index}" data-id="${element.show.id}">`;
+                results += `<img src="'https://via.placeholder.com/210x295/ffffff/666666/?text=TV'"                 class="serie__img" alt="${element.show.name} " />`;
+                results += `<h4 class="serie__title">${seriesList[index].show.name}     </h4>`;
+                results += `</article>`;
+            }
         }
+        const seriesElement = document.querySelector('.js-results');
+        seriesElement.innerHTML = results;
+        listenSearchClick();
     }
-    const seriesElement = document.querySelector('.js-results');
-    seriesElement.innerHTML = results;
-    listenSearchClick();
-    // console.log(results);
 };
 
 button.addEventListener('click', paintSeriesCatalogue);
 
 
-
-// Si no tiene imagen, por defecto, si tiene la de su ruta
-// const getImageSerie = () => {
-
-//         if (results.show.image.src === null) {
-//             return 
-//         } else {
-//             // sí está: muestro un alert
-//             alert('This serie is already in your list!');
-//         }
-//     };
-
 'use strict';
 
-// SELECCCIONAR COMO FAV CON ID
+// SELECCCIONAR COMO FAV 
 
 const saveFavorites = (ev) => {
     let results = '';
-    console.log(results);
-    const clickedId = parseInt(ev.currentTarget.id);
+    const clicked = parseInt(ev.currentTarget);
     for (const result of results) {
-        if (result.id === clickedId && results.indexOf(index) === -1) {
+        if (result === clicked && results.indexOf(index) === -1) {
             favorites.push(result);
             paintSeriesFavorites();
         } else {
             // sí está: muestro un alert
             alert('This serie is already in your list!');
         }
-    }console.log('qué pasa', isNaN(clickedId));
+    }
 };
-  
+console.log(favorites);
 
 const listenSearchClick = () => {
     const seriesBtns = document.querySelectorAll('.js-selectFav');
@@ -109,7 +100,7 @@ const paintSeriesFavorites = (ev) => {
     let favSeries = ''; {
         for (let index = 0; index < seriesList.length; index += 1) {
             favSeries += `<li>`;
-            favSeries += `<article class="serie">`;
+            favSeries += `<article class="serieFav">`;
             favSeries += `<p class="serie__btn js-selectFav"
             id="${seriesList[index].show.id}"
             data-index="${index}">`;
@@ -123,7 +114,7 @@ const paintSeriesFavorites = (ev) => {
     const seriesFavsSelected = document.querySelector('.js-favs');
     seriesFavsSelected.innerHTML = favSeries;
     listenSearchClick();
-    // saveInfo();
+    saveInfo();
 };
 
 
@@ -135,15 +126,15 @@ paintSeriesCatalogue();
 
 //LOCAL STORAGE
 
-// function saveInfo() {
-//     localStorage.setItem('favorites', JSON.stringify(favorites));
-// }
+function saveInfo() {
+    localStorage.setItem('favorites', JSON.stringify(favorites));
+}
 
-// function getInfo() {
-//     const data = JSON.parse(localStorage.getItem('favorites'));
-//     if (data !== null) {
-//         favorites = data;
-//     }
-// };
+function getInfo() {
+    const data = JSON.parse(localStorage.getItem('favorites'));
+    if (data !== null) {
+        favorites = data;
+    }
+};
 
 //# sourceMappingURL=main.js.map
