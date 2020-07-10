@@ -10,17 +10,17 @@ body {
 
 .principal {
 	display: flex;
+	justify-content: center;
 }
 
 .finder {
-	width: 75vw;
 	text-align: center;
 
 	&__name {
-		width: 200px;
+		width: 180px;
 		height: 25px;
 		border-style: none;
-		margin-right: 10px;
+		margin: 10px;
 		align-content: flex-end;
 	}
 	&__results {
@@ -41,16 +41,17 @@ body {
 .favorites {
 	border: 2px solid black;
 	padding: 15px;
-	height: 75vh;
 	order: -1;
 }
 
-.search__button--inactive {
-	background-color: #d5d5d5;
-	box-shadow: none;
-}
 .serie {
-	background-color: lightyellow;
+	background-color: rgba(206, 201, 201, 0.959);
 	border: 1px solid black;
 	margin: 8px 20px 8px 20px;
+	width: 210px;
+}
+
+.serieFav {
+	width: 50px;
+	background-color: goldenrod;
 }
