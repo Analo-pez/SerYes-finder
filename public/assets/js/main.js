@@ -59,8 +59,8 @@ const paintSeriesCatalogue = (ev) => {
         }
         const seriesElement = document.querySelector('.js-results');
         seriesElement.innerHTML = results;
-        listenSearchClick();
     }
+    listenSearchClick();
 };
 
 button.addEventListener('click', paintSeriesCatalogue);
@@ -68,29 +68,29 @@ button.addEventListener('click', paintSeriesCatalogue);
 
 'use strict';
 
-// SELECCCIONAR COMO FAV 
-
-const saveFavorites = (ev) => {
-    let results = '';
-    const clicked = parseInt(ev.currentTarget);
-    for (const result of results) {
-        if (result === clicked && results.indexOf(index) === -1) {
-            favorites.push(result);
-            paintSeriesFavorites();
-        } else {
-            // sí está: muestro un alert
-            alert('This serie is already in your list!');
-        }
-    }
-};
-console.log(favorites);
+//ASIGNO LOS LISTENERS A LOS ARTICLEs
 
 const listenSearchClick = () => {
     const seriesBtns = document.querySelectorAll('.js-selectFav');
-    for (let index = 0; index < seriesBtns.length; index++) {
-        const seriesBtn = seriesBtns[index];
-        seriesBtn.addEventListener('click', saveFavorites);
+    for (let serieBtn of seriesBtns) {
+        serieBtn.addEventListener('click', saveFavorites);
+        serieBtn.addEventListener('click', paintSeriesFavorites);
     }
+};
+
+
+// SELECCCIONAR COMO FAV       
+
+function saveFavorites(ev) {
+    const index = ev.currentTarget.id;
+    if (favorites.indexOf(index) === -1) {
+        favorites.push(index);
+        // index.classList.add("color");
+    } else {
+        alert('Esta serie ya es tu favorita');
+    }
+    console.log(favorites);
+    paintSeriesFavorites();
 };
 
 
@@ -99,7 +99,7 @@ const listenSearchClick = () => {
 const paintSeriesFavorites = (ev) => {
     let favSeries = ''; {
         for (let index = 0; index < seriesList.length; index += 1) {
-            favSeries += `<li>`;
+            favSeries += `<li class= "list">`;
             favSeries += `<article class="serieFav">`;
             favSeries += `<p class="serie__btn js-selectFav"
             id="${seriesList[index].show.id}"
@@ -113,7 +113,7 @@ const paintSeriesFavorites = (ev) => {
     }
     const seriesFavsSelected = document.querySelector('.js-favs');
     seriesFavsSelected.innerHTML = favSeries;
-    listenSearchClick();
+    saveFavorites();
     saveInfo();
 };
 

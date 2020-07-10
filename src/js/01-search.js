@@ -59,8 +59,8 @@ const paintSeriesCatalogue = (ev) => {
         }
         const seriesElement = document.querySelector('.js-results');
         seriesElement.innerHTML = results;
-        listenSearchClick();
     }
+    listenSearchClick();
 };
 
 button.addEventListener('click', paintSeriesCatalogue);

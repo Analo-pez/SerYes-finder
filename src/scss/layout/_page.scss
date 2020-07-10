@@ -40,7 +40,7 @@ body {
 }
 .favorites {
 	border: 2px solid black;
-	padding: 15px;
+	padding: 10px;
 	order: -1;
 }
 
@@ -52,6 +52,12 @@ body {
 }
 
 .serieFav {
-	width: 50px;
-	background-color: goldenrod;
+	width: 110px;
+	margin: 8px 2px 8px 2px;
+}
+.list {
+	list-style-type: none;
+}
+.color {
+	background-color: rgba(141, 9, 141, 0.829);
 }
