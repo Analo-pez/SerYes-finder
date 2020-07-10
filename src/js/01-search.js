@@ -9,16 +9,16 @@ let favSeries = document.querySelector('.js-favs');
 
 //CREAMOS ARRAYS
 
-let seriesList= '';
+let seriesList= [];
 let favorites = [];
 
 // LLAMAMOS A LA API
 const getDataFromApi = () => {
     const serieName = inputName.value;
-    fetch(`http://api.tvmaze.com/singlesearch/shows?q=${serieName}`)
+    fetch(`http://api.tvmaze.com/search/shows?q=${serieName}`)
         .then(response => response.json())
         .then(data => {
-            seriesList = data.name;
+            seriesList = data;
             console.log(seriesList);
             paintSeriesCatalogue(); //pintar
         })
@@ -41,14 +41,15 @@ button.addEventListener('click', fullInputSearch )
 const paintSeriesCatalogue = (ev) => {
     let results = '';{
         for (let index = 0; index < seriesList.length; index += 1) {
+            console.log(seriesList[index].show.name);
             results += `<article class="serie">`;
-            results += `<button class="serie__btn js-selectFav"
-            id="${seriesList[index].id}"
+            results += `<p class="serie__btn js-selectFav"
+            id="${seriesList[index].show.id}"
             data-index="${index}"
-            data-id="${seriesList[index].id}">`;
-            results += `<img src="${seriesList[index].image}" class="serie__img" alt="${seriesList[index].name}" />`;
-            results += `<h4 class="serie__title">${seriesList[index].name}</h4>`;
-            results += `</button>`;
+            data-id="${seriesList[index].show.id}">`;
+            results += `<img src="${seriesList[index].show.image}" class="serie__img" alt="${seriesList[index].show.name}" />`;
+            results += `<h4 class="serie__title">${seriesList[index].show.name}</h4>`;
+            results += `</p>`;
             results += `</article>`;
         }
     }
@@ -61,3 +62,14 @@ const paintSeriesCatalogue = (ev) => {
 button.addEventListener('click', paintSeriesCatalogue);
 
 
+
+// Si no tiene imagen, por defecto, si tiene la de su ruta
+// const getImageSerie = () => {
+
+//         if (results.show.image.src === null) {
+//             return 
+//         } else {
+//             // sí está: muestro un alert
+//             alert('This serie is already in your list!');
+//         }
+//     };

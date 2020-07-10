@@ -34,12 +34,12 @@ const paintSeriesFavorites = (ev) => {
         for (let index = 0; index < seriesList.length; index += 1) {
             favSeries += `<li>`;
             favSeries += `<article class="serie">`;
-            favSeries += `<button class="serie__btn js-selectFav"
-            id="${seriesList[index].id}"
+            favSeries += `<p class="serie__btn js-selectFav"
+            id="${seriesList[index].show.id}"
             data-index="${index}">`;
-            favSeries += `<img src="${seriesList[index].image}" class="serie__img" alt="${seriesList[index].name}" />`;
-            favSeries += `<h4 class="serie__title">${seriesList[index].name}</h4>`;
-            favSeries += `</button>`;
+            favSeries += `<img src="${seriesList[index].show.image}" class="serie__img" alt="${seriesList[index].show.name}" />`;
+            favSeries += `<h4 class="serie__title">${seriesList[index].show.name}</h4>`;
+            favSeries += `</p>`;
             favSeries += `</article>`;
             favSeries += `</li>`;
         }
