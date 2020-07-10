@@ -1,9 +1,14 @@
-// 'use strict';
+'use strict';
+
+//LOCAL STORAGE
 
 // function saveInfo() {
-//     localStorage.setItem('data', JSON.stringify(data));
+//     localStorage.setItem('favorites', JSON.stringify(favorites));
 // }
 
 // function getInfo() {
-//     return JSON.parse(localStorage.getItem('data'));
-// }
+//     const data = JSON.parse(localStorage.getItem('favorites'));
+//     if (data !== null) {
+//         favorites = data;
+//     }
+// };

@@ -1,48 +1,42 @@
 'use strict';
 
-// SELECCCIONAR COMO FAV
+// SELECCCIONAR COMO FAV CON ID
 
-// --Me da fallo como find is not function--
-// const handleSeriesClick = ev => {
-//     // obtenemos el id de la serie clickada
-//     const clickedId = parseInt(ev.currentTarget.id);
-//     // buscamos con find
-//     const result = results.find(resultItem => resultItem.id === clickedId);
-//     favorites.push(result);
-//     paintSeriesFavorites();
-// };
-
-// --Me da fallo como results is not iterable-
-const handleSeriesClick = ev => {
+const saveFavorites = (ev) => {
+    let results = '';
+    console.log(results);
     const clickedId = parseInt(ev.currentTarget.id);
     for (const result of results) {
-        if (result.id === clickedId) {
+        if (result.id === clickedId && results.indexOf(index) === -1) {
             favorites.push(result);
             paintSeriesFavorites();
+        } else {
+            // sí está: muestro un alert
+            alert('This serie is already in your list!');
         }
-    }
+    }console.log('qué pasa', isNaN(clickedId));
 };
-
+  
 
 const listenSearchClick = () => {
     const seriesBtns = document.querySelectorAll('.js-selectFav');
     for (let index = 0; index < seriesBtns.length; index++) {
         const seriesBtn = seriesBtns[index];
-        seriesBtn.addEventListener('click', handleSeriesClick);
+        seriesBtn.addEventListener('click', saveFavorites);
     }
 };
 
 
+//FUNCIÓN PARA PINTAR EN FAVORITOS
+
 const paintSeriesFavorites = (ev) => {
-    let favSeries = '';
-    {
+    let favSeries = ''; {
         for (let index = 0; index < seriesList.length; index += 1) {
-            favSeries += `<li>`
+            favSeries += `<li>`;
             favSeries += `<article class="serie">`;
             favSeries += `<button class="serie__btn js-selectFav"
             id="${seriesList[index].id}"
-            data-index="${index}"
-            data-id="${seriesList[index].id}">`;
+            data-index="${index}">`;
             favSeries += `<img src="${seriesList[index].image}" class="serie__img" alt="${seriesList[index].name}" />`;
             favSeries += `<h4 class="serie__title">${seriesList[index].name}</h4>`;
             favSeries += `</button>`;
@@ -53,9 +47,10 @@ const paintSeriesFavorites = (ev) => {
     const seriesFavsSelected = document.querySelector('.js-favs');
     seriesFavsSelected.innerHTML = favSeries;
     listenSearchClick();
+    // saveInfo();
 };
 
 
-getDataFromApi();
-// paintSeriesCatalogue();
+button.addEventListener('click', getDataFromApi);
+paintSeriesCatalogue();
 
