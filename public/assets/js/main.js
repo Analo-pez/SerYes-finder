@@ -6,6 +6,7 @@ let inputName = document.querySelector('.js-inputName');
 const button = document.querySelector('.js-button');
 let results = document.querySelector('.js-results');
 let favSeries = document.querySelector('.js-favs');
+const resetBtn = document.querySelector('.js-btnReset');
 
 //CREAMOS ARRAYS
 
@@ -52,7 +53,7 @@ const paintSeriesCatalogue = (ev) => {
             }
             else {
                 results += `<article class="serie serie__btn js-selectFav" id="${element.show.id}" data-index="${index}" data-id="${element.show.id}">`;
-                results += `<img src="'https://via.placeholder.com/210x295/ffffff/666666/?text=TV'"                 class="serie__img" alt="${element.show.name} " />`;
+                results += `<img src="https://via.placeholder.com/210x295/ffffff/666666/?text=TV"                 class="serie__img" alt="${element.show.name} " />`;
                 results += `<h4 class="serie__title">${seriesList[index].show.name}     </h4>`;
                 results += `</article>`;
             }
@@ -63,7 +64,7 @@ const paintSeriesCatalogue = (ev) => {
     listenSearchClick();
 };
 
-button.addEventListener('click', paintSeriesCatalogue);
+
 
 
 'use strict';
@@ -74,7 +75,6 @@ const listenSearchClick = () => {
     const seriesBtns = document.querySelectorAll('.js-selectFav');
     for (let serieBtn of seriesBtns) {
         serieBtn.addEventListener('click', saveFavorites);
-        serieBtn.addEventListener('click', paintSeriesFavorites);
     }
 };
 
@@ -82,59 +82,76 @@ const listenSearchClick = () => {
 // SELECCCIONAR COMO FAV       
 
 function saveFavorites(ev) {
-    const index = ev.currentTarget.id;
+    const index = ev.currentTarget;
     if (favorites.indexOf(index) === -1) {
         favorites.push(index);
-        // index.classList.add("color");
+        saveInfo();
+        index.classList.add("color");
+        resetBtn.innerHTML = '<button class="finder__btn">Reset</>';
+        // paintSeriesFavorites();
     } else {
-        alert('Esta serie ya es tu favorita');
+        alert('This serie is already in your list');
     }
     console.log(favorites);
-    paintSeriesFavorites();
+    console.log('me han clickado');
 };
 
 
 //FUNCIÓN PARA PINTAR EN FAVORITOS
 
-const paintSeriesFavorites = (ev) => {
-    let favSeries = ''; {
-        for (let index = 0; index < seriesList.length; index += 1) {
-            favSeries += `<li class= "list">`;
-            favSeries += `<article class="serieFav">`;
-            favSeries += `<p class="serie__btn js-selectFav"
-            id="${seriesList[index].show.id}"
-            data-index="${index}">`;
-            favSeries += `<img src="${seriesList[index].show.image}" class="serie__img" alt="${seriesList[index].show.name}" />`;
-            favSeries += `<h4 class="serie__title">${seriesList[index].show.name}</h4>`;
-            favSeries += `</p>`;
-            favSeries += `</article>`;
-            favSeries += `</li>`;
-        }
-    }
-    const seriesFavsSelected = document.querySelector('.js-favs');
-    seriesFavsSelected.innerHTML = favSeries;
-    saveFavorites();
-    saveInfo();
-};
+
+
+// const paintSeriesFavorites = (ev) => {
+//     let favSeries = ''; {
+//         for (let index = 0; index < seriesList.length; index += 1) {
+//             favSeries += `<li class= "list">`;
+//             favSeries += `<article class="serieFav">`;
+//             favSeries += `<p class="serie__btn js-selectFav"
+//             id="${seriesList[index].show.id}"
+//             data-index="${index}">`;
+//             favSeries += `<img src="${seriesList[index].show.image}" class="serie__img" alt="${seriesList[index].show.name}" />`;
+//             favSeries += `<h4 class="serie__title">${seriesList[index].show.name}</h4>`;
+//             favSeries += `</p>`;
+//             favSeries += `</article>`;
+//             favSeries += `</li>`;
+//         }
+//     }
+//     const seriesFavsSelected = document.querySelector('.js-favs');
+//     seriesFavsSelected.innerHTML = favSeries;
+//     saveFavorites();
+// };
+
 
 
 button.addEventListener('click', getDataFromApi);
-paintSeriesCatalogue();
+button.addEventListener('click', paintSeriesCatalogue);
+// paintSeriesCatalogue();
+getInfo();
 
+const resetFavorites = (ev) => {
+    console.log('me han clickado');
+    favorites = [];
+    saveInfo();
+    // paintSeriesFavorites();
+    resetBtn.classList.add('hidden');
+};
+
+resetBtn.addEventListener("click", resetFavorites);
 
 'use strict';
 
 //LOCAL STORAGE
 
 function saveInfo() {
-    localStorage.setItem('favorites', JSON.stringify(favorites));
+    localStorage.setItem('favoriteSerie', JSON.stringify(favorites));
 }
 
 function getInfo() {
-    const data = JSON.parse(localStorage.getItem('favorites'));
+    const data = JSON.parse(localStorage.getItem('favoriteSerie'));
     if (data !== null) {
         favorites = data;
     }
 };
+
 
 //# sourceMappingURL=main.js.map

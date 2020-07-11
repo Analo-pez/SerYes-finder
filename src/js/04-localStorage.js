@@ -3,12 +3,13 @@
 //LOCAL STORAGE
 
 function saveInfo() {
-    localStorage.setItem('favorites', JSON.stringify(favorites));
+    localStorage.setItem('favoriteSerie', JSON.stringify(favorites));
 }
 
 function getInfo() {
-    const data = JSON.parse(localStorage.getItem('favorites'));
+    const data = JSON.parse(localStorage.getItem('favoriteSerie'));
     if (data !== null) {
         favorites = data;
     }
 };
+
