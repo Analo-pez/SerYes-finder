@@ -16,15 +16,26 @@ body {
 .finder {
 	text-align: center;
 
+	@media all and (min-width: 768px) {
+		padding-left: 50px;
+		width: 400px;
+	}
+
 	&__name {
 		width: 180px;
 		height: 25px;
 		border-style: none;
 		margin: 10px;
 		align-content: flex-end;
+		@media all and (min-width: 768px) {
+			width: 200px;
+		}
 	}
 	&__results {
 		padding-top: 20px;
+		@media all and (min-width: 768px) {
+			padding-left: 50px;
+		}
 	}
 
 	&__btn {
@@ -42,6 +53,9 @@ body {
 	border: 2px solid black;
 	padding: 10px;
 	order: -1;
+	@media all and (min-width: 768px) {
+		width: 250px;
+	}
 }
 
 .serie {
@@ -49,6 +63,10 @@ body {
 	border: 1px solid black;
 	margin: 8px 20px 8px 20px;
 	width: 210px;
+	@media all and (min-width: 768px) {
+		width: 250px;
+		margin: 10px 0px 10px 0px;
+	}
 }
 
 .serieFav {

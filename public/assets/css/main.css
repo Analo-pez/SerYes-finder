@@ -333,14 +333,24 @@ body {
 
 .finder {
   text-align: center; }
+  @media all and (min-width: 768px) {
+    .finder {
+      padding-left: 50px;
+      width: 400px; } }
   .finder__name {
     width: 180px;
     height: 25px;
     border-style: none;
     margin: 10px;
     align-content: flex-end; }
+    @media all and (min-width: 768px) {
+      .finder__name {
+        width: 200px; } }
   .finder__results {
     padding-top: 20px; }
+    @media all and (min-width: 768px) {
+      .finder__results {
+        padding-left: 50px; } }
   .finder__btn {
     border-style: none;
     border-radius: 5px;
@@ -355,12 +365,19 @@ body {
   border: 2px solid black;
   padding: 10px;
   order: -1; }
+  @media all and (min-width: 768px) {
+    .favorites {
+      width: 250px; } }
 
 .serie {
   background-color: rgba(206, 201, 201, 0.959);
   border: 1px solid black;
   margin: 8px 20px 8px 20px;
   width: 210px; }
+  @media all and (min-width: 768px) {
+    .serie {
+      width: 250px;
+      margin: 10px 0px 10px 0px; } }
 
 .serieFav {
   width: 110px;
@@ -383,6 +400,12 @@ body {
 
 .menu {
   color: white; }
+  @media all and (min-width: 768px) {
+    .menu {
+      padding-right: 80px; } }
+  @media all and (min-width: 1200px) {
+    .menu {
+      padding-right: 200px; } }
   .menu__list {
     list-style-type: none;
     display: flex;
@@ -399,5 +422,11 @@ body {
   padding: 1rem;
   color: white;
   background-color: black; }
+  @media all and (min-width: 768px) {
+    .page__footer {
+      padding-left: 80px; } }
+  @media all and (min-width: 1200px) {
+    .page__footer {
+      padding-left: 200px; } }
 
 /*# sourceMappingURL=main.css.map */

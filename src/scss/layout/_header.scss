@@ -6,6 +6,12 @@
 }
 .menu {
 	color: white;
+	@media all and (min-width: 768px) {
+		padding-right: 80px;
+	}
+	@media all and (min-width: 1200px) {
+		padding-right: 200px;
+	}
 
 	&__list {
 		list-style-type: none;
