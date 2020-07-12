@@ -52,7 +52,7 @@ const paintSeriesCatalogue = (ev) => {
             }
             else {
                 results += `<article class="serie serie__btn js-selectFav" id="${element.show.id}" data-index="${index}" data-id="${element.show.id}">`;
-                results += `<img src="'https://via.placeholder.com/210x295/ffffff/666666/?text=TV'"                 class="serie__img" alt="${element.show.name} " />`;
+                results += `<img src='https://via.placeholder.com/210x295/ffffff/666666/?text=TV'                 class="serie__img" alt="${element.show.name} " />`;
                 results += `<h4 class="serie__title">${seriesList[index].show.name}     </h4>`;
                 results += `</article>`;
             }
