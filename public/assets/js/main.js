@@ -88,11 +88,11 @@ function saveFavorites(ev) {
         saveInfo();
         index.classList.add("color");
         resetBtn.innerHTML = '<button class="finder__btn">Reset</>';
-        paintSeriesFavorites();
     } else {
         alert('This serie is already in your list');
     }
     console.log(favorites);
+    paintSeriesFavorites();
     console.log('me han clickado');
 };
 
@@ -131,12 +131,15 @@ const paintSeriesFavorites = (ev) => {
 
 button.addEventListener('click', getDataFromApi);
 button.addEventListener('click', paintSeriesCatalogue);
-getInfo();
+getInfo(favorites);
 
 const resetFavorites = (ev) => {
     console.log('me han clickado');
     favorites = [];
     saveInfo();
+    paintSeriesFavorites();
+    listenSearchClick();
+    // saveFavorites();
     // resetBtn.classList.add('hidden');
 };
 
