@@ -19,7 +19,7 @@ function saveFavorites(ev) {
         saveInfo();
         index.classList.add("color");
         resetBtn.innerHTML = '<button class="finder__btn">Reset</>';
-        // paintSeriesFavorites();
+        paintSeriesFavorites();
     } else {
         alert('This serie is already in your list');
     }
@@ -30,31 +30,36 @@ function saveFavorites(ev) {
 
 //FUNCIÓN PARA PINTAR EN FAVORITOS
 
+const paintSeriesFavorites = (ev) => {
+    let results = ''; {
+        for (let index = 0; index < favorites.length; index += 1) {
+            let element = seriesList[index];
+            if (element.show.image !== null) {
+                results += `<li class= "list">`;
+                results += `<article class="serieFav" id="${element.show.id}"
+                data-index="${index}"
+                data-id="${element.show.id}">`;
+                results += `<img src="${element.show.image.medium}  " class="serie__img" alt="${element.show.name} " />`;
+                results += `<h4 class="serie__title">${seriesList[index].show.name}     </h4>`;
+                results += `</article>`;
+                results += `</li>`;
+            }
+            else {
+                results += `<li class= "list">`;
+                results += `<article class="serieFav" id="${element.show.id}" data-index="${index}" data-id="${element.show.id}">`;
+                results += `<img src="https://via.placeholder.com/210x295/ffffff/666666/?text=TV"                 class="serie__img" alt="${element.show.name} " />`;
+                results += `<h4 class="serie__title">${seriesList[index].show.name}     </h4>`;
+                results += `</article>`;
+                results += `</li>`;
+            }
+        }
+        const seriesElement = document.querySelector('.js-favs');
+        seriesElement.innerHTML = results;
+    }
 
-
-// const paintSeriesFavorites = (ev) => {
-//     let favSeries = ''; {
-//         for (let index = 0; index < seriesList.length; index += 1) {
-//             favSeries += `<li class= "list">`;
-//             favSeries += `<article class="serieFav">`;
-//             favSeries += `<p class="serie__btn js-selectFav"
-//             id="${seriesList[index].show.id}"
-//             data-index="${index}">`;
-//             favSeries += `<img src="${seriesList[index].show.image}" class="serie__img" alt="${seriesList[index].show.name}" />`;
-//             favSeries += `<h4 class="serie__title">${seriesList[index].show.name}</h4>`;
-//             favSeries += `</p>`;
-//             favSeries += `</article>`;
-//             favSeries += `</li>`;
-//         }
-//     }
-//     const seriesFavsSelected = document.querySelector('.js-favs');
-//     seriesFavsSelected.innerHTML = favSeries;
-//     saveFavorites();
-// };
-
+};
 
 
 button.addEventListener('click', getDataFromApi);
 button.addEventListener('click', paintSeriesCatalogue);
-// paintSeriesCatalogue();
 getInfo();

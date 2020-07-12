@@ -325,14 +325,15 @@ body {
   font-family: "Roboto", sans-serif; }
 
 .page__main {
-  padding: 20px; }
+  padding: 10px; }
 
 .principal {
   display: flex;
   justify-content: center; }
 
 .finder {
-  text-align: center; }
+  text-align: center;
+  width: 200px; }
   @media all and (min-width: 768px) {
     .finder {
       padding-left: 50px;
@@ -363,21 +364,24 @@ body {
 
 .favorites {
   border: 2px solid black;
-  padding: 10px;
+  width: 165px;
+  padding: 5px;
   order: -1; }
   @media all and (min-width: 768px) {
     .favorites {
-      width: 250px; } }
+      width: 200px; } }
 
 .serie {
   background-color: rgba(206, 201, 201, 0.959);
   border: 1px solid black;
   margin: 8px 20px 8px 20px;
-  width: 210px; }
+  width: 150px; }
   @media all and (min-width: 768px) {
     .serie {
       width: 250px;
       margin: 10px 0px 10px 0px; } }
+  .serie__img {
+    width: 150px; }
 
 .serieFav {
   width: 110px;
