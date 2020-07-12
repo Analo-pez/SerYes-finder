@@ -1,7 +1,6 @@
 const resetFavorites = (ev) => {
-    console.log('me han clickado');
     favorites = [];
-    saveInfo();
+    localStorage.clear();
     // paintSeriesFavorites();
     resetBtn.classList.add('hidden');
 };

@@ -85,10 +85,11 @@ function saveFavorites(ev) {
     const index = ev.currentTarget;
     if (favorites.indexOf(index) === -1) {
         favorites.push(index);
-        saveInfo();
+        saveInfo(favorites);
         index.classList.add("color");
+        index.classList.add("selected");
         resetBtn.innerHTML = '<button class="finder__btn">Reset</>';
-        // paintSeriesFavorites();
+        // paintSeriesFavorites(ev);
     } else {
         alert('This serie is already in your list');
     }
@@ -97,41 +98,25 @@ function saveFavorites(ev) {
 };
 
 
+
 //FUNCIÓN PARA PINTAR EN FAVORITOS
 
 
+const paintSeriesFavorites = (ev) => {
 
-// const paintSeriesFavorites = (ev) => {
-//     let favSeries = ''; {
-//         for (let index = 0; index < seriesList.length; index += 1) {
-//             favSeries += `<li class= "list">`;
-//             favSeries += `<article class="serieFav">`;
-//             favSeries += `<p class="serie__btn js-selectFav"
-//             id="${seriesList[index].show.id}"
-//             data-index="${index}">`;
-//             favSeries += `<img src="${seriesList[index].show.image}" class="serie__img" alt="${seriesList[index].show.name}" />`;
-//             favSeries += `<h4 class="serie__title">${seriesList[index].show.name}</h4>`;
-//             favSeries += `</p>`;
-//             favSeries += `</article>`;
-//             favSeries += `</li>`;
-//         }
-//     }
-//     const seriesFavsSelected = document.querySelector('.js-favs');
-//     seriesFavsSelected.innerHTML = favSeries;
-//     saveFavorites();
-// };
+}
 
 
 
 button.addEventListener('click', getDataFromApi);
 button.addEventListener('click', paintSeriesCatalogue);
-// paintSeriesCatalogue();
 getInfo();
+// paintSeriesCatalogue();
+
 
 const resetFavorites = (ev) => {
-    console.log('me han clickado');
     favorites = [];
-    saveInfo();
+    localStorage.clear();
     // paintSeriesFavorites();
     resetBtn.classList.add('hidden');
 };
