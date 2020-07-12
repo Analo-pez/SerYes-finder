@@ -1,7 +1,8 @@
 const resetFavorites = (ev) => {
     favorites = [];
     localStorage.clear();
-    // paintSeriesFavorites();
+    const seriesFavsSelected = document.querySelector('.js-favs');
+    seriesFavsSelected.innerHTML = "";
     resetBtn.classList.add('hidden');
 };
 
