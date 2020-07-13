@@ -14,27 +14,14 @@ const listenSearchClick = () => {
 
 function saveFavorites(ev) {
     const clickedId = parseInt(ev.currentTarget.id);
-    // buscas con find el elemento clickado
-    // lo añades a favorites
-    // repintas, guardas en el local storage
 
     const clikedIdFav = seriesList.find(favItem => favItem.show.id === clickedId);
     favorites.push(clikedIdFav);
-    paintSeriesCatalogue()
+    paintSeriesCatalogue();
     paintSeriesFavorites();
     saveInfo();
     resetBtn.innerHTML = '<button class="finder__btn">Reset</>';
-
-
-    // const clickedIndex = favorites.findIndex(favorite => favorite.show.id === clickedId);
-    // // buscar el clickado dentro de favoritos con findIndex
-    // // si existe lo sacas favorites
-    // // con splice y el indice que ya tienes
-    // // si no existe lo metes en favorites
 };
-
-//     
-
 
 //FUNCIÓN PARA PINTAR EN FAVORITOS
 

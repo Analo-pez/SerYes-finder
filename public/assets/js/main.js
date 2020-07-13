@@ -47,8 +47,6 @@ const paintSeriesCatalogue = () => {
             if (element === favorites[index]) {
                 favClass = 'color'
             }
-            // if element esta en favorites
-            // favClass='color'
             results += `<article class="serie serie__btn js-selectFav ${favClass}" id="${element.show.id}" data-index="${index}" data-id="${element.show.id}">`;
             if (element.show.image !== null) {
                 results += `<img src="${element.show.image.medium}  " class="serie__img" alt="${element.show.name} " />`;
@@ -84,27 +82,14 @@ const listenSearchClick = () => {
 
 function saveFavorites(ev) {
     const clickedId = parseInt(ev.currentTarget.id);
-    // buscas con find el elemento clickado
-    // lo añades a favorites
-    // repintas, guardas en el local storage
 
     const clikedIdFav = seriesList.find(favItem => favItem.show.id === clickedId);
     favorites.push(clikedIdFav);
-    paintSeriesCatalogue()
+    paintSeriesCatalogue();
     paintSeriesFavorites();
     saveInfo();
     resetBtn.innerHTML = '<button class="finder__btn">Reset</>';
-
-
-    // const clickedIndex = favorites.findIndex(favorite => favorite.show.id === clickedId);
-    // // buscar el clickado dentro de favoritos con findIndex
-    // // si existe lo sacas favorites
-    // // con splice y el indice que ya tienes
-    // // si no existe lo metes en favorites
 };
-
-//     
-
 
 //FUNCIÓN PARA PINTAR EN FAVORITOS
 
@@ -142,7 +127,6 @@ const resetFavorites = (ev) => {
     saveInfo();
     paintSeriesFavorites();
     listenSearchClick();
-    // saveFavorites();
     resetBtn.classList.add('hidden');
 };
 

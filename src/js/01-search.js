@@ -47,8 +47,6 @@ const paintSeriesCatalogue = () => {
             if (element === favorites[index]) {
                 favClass = 'color'
             }
-            // if element esta en favorites
-            // favClass='color'
             results += `<article class="serie serie__btn js-selectFav ${favClass}" id="${element.show.id}" data-index="${index}" data-id="${element.show.id}">`;
             if (element.show.image !== null) {
                 results += `<img src="${element.show.image.medium}  " class="serie__img" alt="${element.show.name} " />`;
