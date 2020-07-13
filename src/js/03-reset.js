@@ -5,7 +5,7 @@ const resetFavorites = (ev) => {
     paintSeriesFavorites();
     listenSearchClick();
     // saveFavorites();
-    // resetBtn.classList.add('hidden');
+    resetBtn.classList.add('hidden');
 };
 
 resetBtn.addEventListener("click", resetFavorites);

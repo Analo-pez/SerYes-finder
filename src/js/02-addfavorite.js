@@ -13,19 +13,27 @@ const listenSearchClick = () => {
 // SELECCCIONAR COMO FAV       
 
 function saveFavorites(ev) {
-    const index = ev.currentTarget;
-    if (favorites.indexOf(index) === -1) {
-        favorites.push(index);
-        saveInfo();
-        index.classList.add("color");
-        resetBtn.innerHTML = '<button class="finder__btn">Reset</>';
-    } else {
-        alert('This serie is already in your list');
-    }
-    console.log(favorites);
+    const clickedId = parseInt(ev.currentTarget.id);
+    // buscas con find el elemento clickado
+    // lo añades a favorites
+    // repintas, guardas en el local storage
+
+    const clikedIdFav = seriesList.find(favItem => favItem.show.id === clickedId);
+    favorites.push(clikedIdFav);
+    paintSeriesCatalogue()
     paintSeriesFavorites();
-    console.log('me han clickado');
+    saveInfo();
+    resetBtn.innerHTML = '<button class="finder__btn">Reset</>';
+
+
+    // const clickedIndex = favorites.findIndex(favorite => favorite.show.id === clickedId);
+    // // buscar el clickado dentro de favoritos con findIndex
+    // // si existe lo sacas favorites
+    // // con splice y el indice que ya tienes
+    // // si no existe lo metes en favorites
 };
+
+//     
 
 
 //FUNCIÓN PARA PINTAR EN FAVORITOS
@@ -33,25 +41,19 @@ function saveFavorites(ev) {
 const paintSeriesFavorites = (ev) => {
     let results = ''; {
         for (let index = 0; index < favorites.length; index += 1) {
-            let element = seriesList[index];
+            let element = favorites[index];
+            results += `<li class= "list">`;
+            results += `<article class="serieFav" id="${element.show.id}"
+            data-index="${index}"
+            data-id="${element.show.id}">`;
             if (element.show.image !== null) {
-                results += `<li class= "list">`;
-                results += `<article class="serieFav" id="${element.show.id}"
-                data-index="${index}"
-                data-id="${element.show.id}">`;
                 results += `<img src="${element.show.image.medium}  " class="serie__img" alt="${element.show.name} " />`;
-                results += `<h4 class="serie__title">${seriesList[index].show.name}     </h4>`;
-                results += `</article>`;
-                results += `</li>`;
+            } else {
+                results += `<img src="https://via.placeholder.com/210x295/ffffff/666666/?text=TV" class="serie__img" alt="${element.show.name} " />`;
             }
-            else {
-                results += `<li class= "list">`;
-                results += `<article class="serieFav" id="${element.show.id}" data-index="${index}" data-id="${element.show.id}">`;
-                results += `<img src="https://via.placeholder.com/210x295/ffffff/666666/?text=TV"                 class="serie__img" alt="${element.show.name} " />`;
-                results += `<h4 class="serie__title">${seriesList[index].show.name}     </h4>`;
-                results += `</article>`;
-                results += `</li>`;
-            }
+            results += `<h4 class="serie__title">${favorites[index].show.name}     </h4>`;
+            results += `</article>`;
+            results += `</li>`;
         }
         const seriesElement = document.querySelector('.js-favs');
         seriesElement.innerHTML = results;

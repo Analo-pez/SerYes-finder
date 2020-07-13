@@ -21,7 +21,7 @@ const getDataFromApi = () => {
         .then(data => {
             seriesList = data;
             console.log(seriesList);
-            paintSeriesCatalogue(); //pintar
+            paintSeriesCatalogue();
         })
         .catch(err => {
             console.log('Ha habido un error', err);
@@ -39,25 +39,26 @@ function fullInputSearch(evt) {
 button.addEventListener('click', fullInputSearch);
 
 //FUNCION PARA PINTAR CATÁLOGO
-const paintSeriesCatalogue = (ev) => {
+const paintSeriesCatalogue = () => {
     let results = ''; {
         for (let index = 0; index < seriesList.length; index += 1) {
             let element = seriesList[index];
+            let favClass = '';
+            if (element === favorites[index]) {
+                favClass = 'color'
+            }
+            // if element esta en favorites
+            // favClass='color'
+            results += `<article class="serie serie__btn js-selectFav ${favClass}" id="${element.show.id}" data-index="${index}" data-id="${element.show.id}">`;
             if (element.show.image !== null) {
-                results += `<article class="serie serie__btn js-selectFav" id="${element.show.id}"
-                    data-index="${index}"
-                    data-id="${element.show.id}">`;
                 results += `<img src="${element.show.image.medium}  " class="serie__img" alt="${element.show.name} " />`;
-                results += `<h4 class="serie__title">${seriesList[index].show.name}     </h4>`;
-                results += `</article>`;
+            } else {
+                results += `<img src="https://via.placeholder.com/210x295/ffffff/666666/?text=TV" class="serie__img" alt="${element.show.name} " />`;
             }
-            else {
-                results += `<article class="serie serie__btn js-selectFav" id="${element.show.id}" data-index="${index}" data-id="${element.show.id}">`;
-                results += `<img src="https://via.placeholder.com/210x295/ffffff/666666/?text=TV"                 class="serie__img" alt="${element.show.name} " />`;
-                results += `<h4 class="serie__title">${seriesList[index].show.name}     </h4>`;
-                results += `</article>`;
-            }
+            results += `<h4 class="serie__title">${seriesList[index].show.name} </h4>`;
+            results += `</article>`;
         }
+
         const seriesElement = document.querySelector('.js-results');
         seriesElement.innerHTML = results;
     }
