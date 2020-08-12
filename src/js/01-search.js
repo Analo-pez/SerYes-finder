@@ -54,6 +54,7 @@ const paintSeriesCatalogue = () => {
                 results += `<img src="https://via.placeholder.com/210x295/ffffff/666666/?text=TV" class="serie__img" alt="${element.show.name} " />`;
             }
             results += `<h4 class="serie__title">${seriesList[index].show.name} </h4>`;
+            results += `<h5 class="serie__title">${seriesList[index].show.premiered} </h5>`;
             results += `</article>`;
         }
 

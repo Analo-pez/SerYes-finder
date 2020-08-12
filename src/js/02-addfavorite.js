@@ -17,7 +17,6 @@ function saveFavorites(ev) {
 
     const clikedIdFav = seriesList.find(favItem => favItem.show.id === clickedId);
     favorites.push(clikedIdFav);
-    paintSeriesCatalogue();
     paintSeriesFavorites();
     saveInfo();
     resetBtn.innerHTML = '<button class="finder__btn">Reset</>';
