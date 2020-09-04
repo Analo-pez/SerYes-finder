@@ -1,5 +1,4 @@
 const resetFavorites = (ev) => {
-    console.log('me han clickado');
     favoritesSelect = [];
     saveInfo();
     paintSeriesFavorites();

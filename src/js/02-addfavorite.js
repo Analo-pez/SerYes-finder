@@ -15,8 +15,14 @@ const listenSearchClick = () => {
 function saveFavorites(ev) {
     const clickedId = parseInt(ev.currentTarget.id);
     const clikedIdFav = seriesList.find(favItem => favItem.show.id === clickedId);
-    favoritesSelect.push(clikedIdFav);
-    paintSeriesFavorites();
+    if (favoritesSelect.indexOf(clikedIdFav) === -1) {
+        favoritesSelect.push(clikedIdFav);
+        const serieFav = document.getElementById(clickedId);
+        serieFav.classList.add('color');
+        paintSeriesFavorites();
+    } else {
+        alert('This serie is already in your list');
+    }
     saveInfo();
 };
 

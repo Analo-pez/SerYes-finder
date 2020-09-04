@@ -80,8 +80,14 @@ const listenSearchClick = () => {
 function saveFavorites(ev) {
     const clickedId = parseInt(ev.currentTarget.id);
     const clikedIdFav = seriesList.find(favItem => favItem.show.id === clickedId);
-    favoritesSelect.push(clikedIdFav);
-    paintSeriesFavorites();
+    if (favoritesSelect.indexOf(clikedIdFav) === -1) {
+        favoritesSelect.push(clikedIdFav);
+        const serieFav = document.getElementById(clickedId);
+        serieFav.classList.add('color');
+        paintSeriesFavorites();
+    } else {
+        alert('This serie is already in your list');
+    }
     saveInfo();
 };
 
@@ -116,7 +122,6 @@ button.addEventListener('click', paintSeriesCatalogue);
 getInfo(favoritesSelect);
 
 const resetFavorites = (ev) => {
-    console.log('me han clickado');
     favoritesSelect = [];
     saveInfo();
     paintSeriesFavorites();
@@ -124,7 +129,6 @@ const resetFavorites = (ev) => {
 };
 
 resetBtn.addEventListener("click", resetFavorites);
-
 'use strict';
 
 //LOCAL STORAGE
