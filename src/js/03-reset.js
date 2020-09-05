@@ -2,7 +2,7 @@ const resetFavorites = (ev) => {
     favoritesSelect = [];
     saveInfo();
     paintSeriesFavorites();
-    listenSearchClick();
+    paintSeriesCatalogue();
 };
 
 resetBtn.addEventListener("click", resetFavorites);

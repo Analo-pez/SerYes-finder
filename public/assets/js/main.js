@@ -20,7 +20,6 @@ const getDataFromApi = () => {
         .then(response => response.json())
         .then(data => {
             seriesList = data;
-            console.log(seriesList);
             paintSeriesCatalogue();
         })
         .catch(err => {
@@ -35,8 +34,8 @@ function fullInputSearch(evt) {
         return alert('Write a serie name');
     }
 };
-
 button.addEventListener('click', fullInputSearch);
+
 
 //FUNCION PARA PINTAR CATÁLOGO
 const paintSeriesCatalogue = () => {
@@ -80,10 +79,10 @@ const listenSearchClick = () => {
 function saveFavorites(ev) {
     const clickedId = parseInt(ev.currentTarget.id);
     const clikedIdFav = seriesList.find(favItem => favItem.show.id === clickedId);
+    const serieFav = document.getElementById(clickedId);
+    serieFav.classList.add('color');
     if (favoritesSelect.indexOf(clikedIdFav) === -1) {
         favoritesSelect.push(clikedIdFav);
-        const serieFav = document.getElementById(clickedId);
-        serieFav.classList.add('color');
         paintSeriesFavorites();
     } else {
         alert('This serie is already in your list');
@@ -125,7 +124,7 @@ const resetFavorites = (ev) => {
     favoritesSelect = [];
     saveInfo();
     paintSeriesFavorites();
-    listenSearchClick();
+    paintSeriesCatalogue();
 };
 
 resetBtn.addEventListener("click", resetFavorites);

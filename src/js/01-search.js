@@ -20,7 +20,6 @@ const getDataFromApi = () => {
         .then(response => response.json())
         .then(data => {
             seriesList = data;
-            console.log(seriesList);
             paintSeriesCatalogue();
         })
         .catch(err => {
@@ -35,8 +34,8 @@ function fullInputSearch(evt) {
         return alert('Write a serie name');
     }
 };
-
 button.addEventListener('click', fullInputSearch);
+
 
 //FUNCION PARA PINTAR CATÁLOGO
 const paintSeriesCatalogue = () => {
